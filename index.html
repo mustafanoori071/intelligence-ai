@@ -4,62 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intelligence AI — AI-Powered Lead Capture & Automation</title>
-  <meta name="description" content="We build AI-powered chat and automation systems for local service businesses that capture leads and book appointments automatically — 24/7.">
+  <meta name="description" content="Never miss another lead. Intelligence AI builds AI chat, CRM automation, and booking systems for local service businesses — 24/7.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="canonical" href="https://getintelligence.co/">
   <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a405fcaa3d7dca4976092f1" data-source="WEB_USER"></script>
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-primary: #0a0e1a;
-      --bg-secondary: #111827;
-      --bg-card: #151d2e;
-      --bg-card-hover: #1a2438;
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --accent: #3b82f6;
-      --accent-light: #60a5fa;
-      --accent-glow: rgba(59, 130, 246, 0.35);
-      --border: rgba(148, 163, 184, 0.12);
-      --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(59, 130, 246, 0.18), transparent);
+      --bg: #060912;
+      --bg-2: #0c1222;
+      --bg-3: #111827;
+      --card: rgba(17, 24, 39, 0.72);
+      --card-solid: #131b2e;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --dim: #64748b;
+      --blue: #3b82f6;
+      --blue-light: #60a5fa;
+      --cyan: #22d3ee;
+      --violet: #8b5cf6;
+      --border: rgba(148, 163, 184, 0.14);
+      --glow: rgba(59, 130, 246, 0.45);
+      --radius: 20px;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .logo, .price-amount {
+      font-family: 'Outfit', 'Inter', sans-serif;
     }
 
     .container {
       width: 100%;
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
       padding: 0 1.5rem;
+    }
+
+    /* Ambient background */
+    .bg-mesh {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 10%, rgba(59, 130, 246, 0.16), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 85% 15%, rgba(139, 92, 246, 0.12), transparent 50%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(34, 211, 238, 0.08), transparent 55%),
+        var(--bg);
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black, transparent);
     }
 
     /* Header */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(10, 14, 26, 0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(6, 9, 18, 0.78);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
 
@@ -67,19 +90,23 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 76px;
+      gap: 1rem;
     }
 
     .logo {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      color: var(--text-primary);
+      color: var(--text);
       text-decoration: none;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     .logo span {
-      color: var(--accent-light);
+      background: linear-gradient(135deg, var(--blue-light), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     nav {
@@ -89,15 +116,28 @@
     }
 
     nav a {
-      color: var(--text-secondary);
+      color: var(--muted);
       text-decoration: none;
-      font-size: 0.9375rem;
+      font-size: 0.9rem;
       font-weight: 500;
       transition: color 0.2s;
     }
 
-    nav a:hover {
-      color: var(--text-primary);
+    nav a:hover { color: var(--text); }
+
+    .nav-cta {
+      padding: 0.65rem 1.25rem !important;
+      background: linear-gradient(135deg, var(--blue), #2563eb);
+      color: #fff !important;
+      border-radius: 999px;
+      font-weight: 600 !important;
+      box-shadow: 0 4px 20px var(--glow);
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px var(--glow);
     }
 
     .nav-toggle {
@@ -105,254 +145,482 @@
       background: none;
       border: none;
       cursor: pointer;
+      color: var(--text);
       padding: 0.5rem;
-      color: var(--text-primary);
     }
 
-    .nav-toggle svg {
-      width: 24px;
-      height: 24px;
-    }
+    .nav-toggle svg { width: 24px; height: 24px; }
 
-    /* Hero */
-    .hero {
-      padding: 10rem 0 6rem;
-      background: var(--gradient-hero);
-      text-align: center;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      padding: 0.375rem 1rem;
-      background: rgba(59, 130, 246, 0.12);
-      border: 1px solid rgba(59, 130, 246, 0.25);
-      border-radius: 999px;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--accent-light);
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.02em;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.25rem, 5vw, 3.75rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero p {
-      font-size: clamp(1.0625rem, 2vw, 1.25rem);
-      color: var(--text-secondary);
-      max-width: 640px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-    }
-
-    .btn-primary {
+    /* Buttons */
+    .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       padding: 1rem 2rem;
-      background: var(--accent);
-      color: #fff;
+      border-radius: 12px;
       font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
-      border-radius: 10px;
       border: none;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 24px var(--accent-glow);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), #2563eb);
+      color: #fff;
+      box-shadow: 0 8px 32px var(--glow);
     }
 
     .btn-primary:hover {
-      background: var(--accent-light);
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px var(--accent-glow);
+      box-shadow: 0 12px 40px var(--glow);
     }
 
-    .btn-primary svg {
-      width: 18px;
-      height: 18px;
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      border: 1px solid var(--border);
     }
 
-    /* Section shared */
-    section {
-      padding: 5rem 0;
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
     }
+
+    .btn svg { width: 18px; height: 18px; }
+
+    /* Hero */
+    .hero {
+      padding: 9rem 0 5rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem 0.4rem 0.5rem;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.28);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 900px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, #fff 0%, var(--blue-light) 50%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .stat {
+      padding: 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+    }
+
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--blue-light);
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--dim);
+      margin-top: 0.25rem;
+    }
+
+    /* Sections */
+    section { padding: 5.5rem 0; }
 
     .section-label {
       display: block;
       text-align: center;
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent-light);
+      letter-spacing: 0.14em;
+      color: var(--cyan);
       margin-bottom: 0.75rem;
     }
 
     .section-title {
       text-align: center;
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 3rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 3rem;
+      font-size: 1.05rem;
     }
 
     /* How it works */
-    .how-it-works {
-      background: var(--bg-secondary);
-    }
+    .how-it-works { background: rgba(12, 18, 34, 0.6); }
 
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      position: relative;
-    }
-
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 36px;
-      left: calc(16.67% + 1rem);
-      right: calc(16.67% + 1rem);
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
-      opacity: 0.3;
+      gap: 1.5rem;
     }
 
     .step {
-      text-align: center;
-      position: relative;
+      padding: 2rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px);
+      transition: border-color 0.25s, transform 0.25s;
     }
 
-    .step-number {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 1.5rem;
+    .step:hover {
+      border-color: rgba(59, 130, 246, 0.35);
+      transform: translateY(-4px);
+    }
+
+    .step-num {
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--bg-card);
-      border: 2px solid var(--accent);
-      border-radius: 50%;
-      font-size: 1.5rem;
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(34,211,238,0.15));
+      border: 1px solid rgba(59,130,246,0.35);
+      border-radius: 12px;
+      font-family: 'Outfit', sans-serif;
       font-weight: 800;
-      color: var(--accent-light);
-      position: relative;
-      z-index: 1;
+      color: var(--blue-light);
+      margin-bottom: 1.25rem;
     }
 
     .step h3 {
       font-size: 1.125rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
     }
 
-    .step p {
-      color: var(--text-secondary);
-      font-size: 0.9375rem;
-    }
+    .step p { color: var(--muted); font-size: 0.9375rem; }
 
-    /* Services */
-    .services-grid {
+    /* Pricing */
+    .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
+      align-items: start;
     }
 
-    .service-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+    .price-card {
+      position: relative;
       padding: 2rem;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px);
+      transition: transform 0.25s, border-color 0.25s;
     }
 
-    .service-card:hover {
-      background: var(--bg-card-hover);
+    .price-card:hover {
+      transform: translateY(-6px);
       border-color: rgba(59, 130, 246, 0.3);
-      transform: translateY(-4px);
     }
 
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(59, 130, 246, 0.12);
-      border-radius: 12px;
-      margin-bottom: 1.25rem;
-      color: var(--accent-light);
+    .price-card.featured {
+      background: linear-gradient(160deg, rgba(59,130,246,0.12) 0%, rgba(17,24,39,0.9) 40%);
+      border-color: rgba(59, 130, 246, 0.45);
+      box-shadow: 0 0 60px rgba(59, 130, 246, 0.15);
+      transform: scale(1.03);
     }
 
-    .service-icon svg {
-      width: 24px;
-      height: 24px;
-    }
+    .price-card.featured:hover { transform: scale(1.03) translateY(-6px); }
 
-    .service-card h3 {
-      font-size: 1.25rem;
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.35rem 1rem;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      border-radius: 999px;
+      font-size: 0.7rem;
       font-weight: 700;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
     }
 
-    .service-card p {
-      color: var(--text-secondary);
-      font-size: 0.9375rem;
-      line-height: 1.65;
+    .tier-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
     }
+
+    .tier-tagline {
+      color: var(--cyan);
+      font-size: 0.875rem;
+      font-weight: 600;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-block { margin-bottom: 1.5rem; }
+
+    .price-setup {
+      font-size: 0.875rem;
+      color: var(--dim);
+      margin-bottom: 0.25rem;
+    }
+
+    .price-amount {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .price-amount span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .price-annual {
+      font-size: 0.8125rem;
+      color: var(--dim);
+      margin-top: 0.35rem;
+    }
+
+    .feature-group-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      margin: 1.25rem 0 0.75rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .feature-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      background: rgba(34, 197, 94, 0.15);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2322c55e' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 12.75l6 6 9-13.5'/%3E%3C/svg%3E");
+      background-size: 12px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .price-cta {
+      display: block;
+      width: 100%;
+      margin-top: 1.75rem;
+      padding: 0.9rem;
+      text-align: center;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .price-cta-primary {
+      background: linear-gradient(135deg, var(--blue), #2563eb);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--glow);
+    }
+
+    .price-cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px var(--glow);
+    }
+
+    .price-cta-secondary {
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .price-cta-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ROI Table */
+    .roi-section { background: rgba(12, 18, 34, 0.6); }
+
+    .roi-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      backdrop-filter: blur(12px);
+    }
+
+    table.roi-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 480px;
+    }
+
+    .roi-table th,
+    .roi-table td {
+      padding: 1.1rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .roi-table th {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .roi-table td { color: var(--muted); font-size: 0.9375rem; }
+
+    .roi-table tr:last-child td { border-bottom: none; }
+
+    .roi-table .highlight {
+      color: var(--blue-light);
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      margin: 0 1.5rem 5rem;
+      max-width: 1180px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.12));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(59,130,246,0.2), transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+
+    .cta-banner p {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+
+    .cta-banner .btn { position: relative; }
 
     /* Footer */
     footer {
-      background: var(--bg-secondary);
+      background: var(--bg-2);
       border-top: 1px solid var(--border);
       padding: 3rem 0 2rem;
     }
 
-    .footer-main {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
+    .footer-main { text-align: center; }
 
     .footer-brand {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem 1rem;
-      font-size: 0.9375rem;
-    }
-
-    .footer-links a {
-      color: var(--accent-light);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--text-primary);
-    }
-
-    .footer-separator {
-      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
 
     .footer-contact {
@@ -361,19 +629,16 @@
       align-items: center;
       gap: 0.35rem;
       margin-bottom: 1.25rem;
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
+      font-size: 0.9rem;
+      color: var(--muted);
     }
 
     .footer-contact a {
-      color: var(--accent-light);
+      color: var(--blue-light);
       text-decoration: none;
-      transition: color 0.2s;
     }
 
-    .footer-contact a:hover {
-      color: var(--text-primary);
-    }
+    .footer-contact a:hover { color: var(--text); }
 
     .footer-legal {
       display: flex;
@@ -381,37 +646,21 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 0.5rem 1rem;
-      margin-bottom: 1.5rem;
+      margin-top: 1rem;
     }
 
     .footer-legal button {
       background: none;
       border: none;
-      color: var(--accent-light);
+      color: var(--blue-light);
       font-family: inherit;
       font-size: 0.875rem;
-      font-weight: 500;
       cursor: pointer;
       text-decoration: underline;
       text-underline-offset: 3px;
-      padding: 0;
-      transition: color 0.2s;
     }
 
-    .footer-legal button:hover {
-      color: var(--text-primary);
-    }
-
-    .footer-consent {
-      max-width: 720px;
-      margin: 0 auto;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
+    .footer-separator { color: var(--dim); }
 
     /* Legal modals */
     .legal-panel {
@@ -419,7 +668,7 @@
       position: fixed;
       inset: 0;
       z-index: 200;
-      background: rgba(10, 14, 26, 0.92);
+      background: rgba(6, 9, 18, 0.92);
       backdrop-filter: blur(8px);
       padding: 1.5rem;
       overflow-y: auto;
@@ -432,9 +681,9 @@
     }
 
     .legal-content {
-      background: var(--bg-card);
+      background: var(--card-solid);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: var(--radius);
       max-width: 720px;
       width: 100%;
       padding: 2rem;
@@ -443,72 +692,70 @@
     }
 
     .legal-content h2 {
+      font-family: 'Outfit', sans-serif;
       font-size: 1.5rem;
       font-weight: 800;
       margin-bottom: 0.25rem;
-      letter-spacing: -0.02em;
     }
 
-    .legal-content .legal-updated {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
+    .legal-updated { font-size: 0.8125rem; color: var(--dim); margin-bottom: 1.5rem; }
 
     .legal-content h3 {
       font-size: 1rem;
       font-weight: 700;
       margin: 1.25rem 0 0.5rem;
-      color: var(--text-primary);
     }
 
-    .legal-content p,
-    .legal-content li {
+    .legal-content p, .legal-content li {
       font-size: 0.9375rem;
-      color: var(--text-secondary);
+      color: var(--muted);
       line-height: 1.7;
       margin-bottom: 0.75rem;
     }
 
-    .legal-content ul {
-      padding-left: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
+    .legal-content ul { padding-left: 1.25rem; }
 
     .legal-close {
       position: absolute;
       top: 1rem;
       right: 1rem;
-      background: var(--bg-secondary);
+      background: var(--bg-3);
       border: 1px solid var(--border);
-      color: var(--text-primary);
+      color: var(--text);
       width: 36px;
       height: 36px;
       border-radius: 8px;
       font-size: 1.25rem;
-      line-height: 1;
       cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
     }
 
-    .legal-close:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(59, 130, 246, 0.3);
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    /* Mobile nav */
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile */
+    @media (max-width: 960px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+      .price-card.featured { transform: none; }
+      .price-card.featured:hover { transform: translateY(-6px); }
+    }
+
     @media (max-width: 768px) {
-      .nav-toggle {
-        display: block;
-      }
+      .nav-toggle { display: block; }
 
       nav {
         position: fixed;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: rgba(10, 14, 26, 0.97);
-        backdrop-filter: blur(12px);
+        top: 76px; left: 0; right: 0;
+        background: rgba(6, 9, 18, 0.97);
+        backdrop-filter: blur(16px);
         flex-direction: column;
         padding: 1.5rem;
         gap: 1.25rem;
@@ -525,36 +772,19 @@
         pointer-events: auto;
       }
 
-      nav a {
-        font-size: 1.0625rem;
-      }
-
-      .hero {
-        padding: 8rem 0 4rem;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .steps::before {
-        display: none;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 3.5rem 0;
-      }
+      .hero { padding: 7.5rem 0 3.5rem; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 0; }
+      .cta-banner { margin-bottom: 3rem; padding: 3rem 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
   <header>
     <div class="container header-inner">
       <a href="#" class="logo">Intelligence <span>AI</span></a>
@@ -564,46 +794,65 @@
         </svg>
       </button>
       <nav id="main-nav">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
+        <a href="#packages">Packages</a>
+        <a href="#about">How It Works</a>
+        <a href="#roi">ROI</a>
         <a href="#contact">Contact</a>
+        <a href="https://calendly.com/mustafanoori071/30min" class="nav-cta" target="_blank" rel="noopener noreferrer">Book Demo</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <span class="hero-badge">AI-Powered for Local Businesses</span>
-      <h1>Never Miss Another Lead Again</h1>
-      <p>We build AI-powered chat and automation systems for local service businesses that capture leads and book appointments automatically — 24/7.</p>
-      <a href="https://calendly.com/mustafanoori071/30min" class="btn-primary" target="_blank" rel="noopener noreferrer">
-        Book a Free Demo
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-        </svg>
-      </a>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        AI-Powered for Local Service Businesses
+      </div>
+      <h1><span class="gradient">Never Miss Another Lead</span> Again</h1>
+      <p class="hero-sub">We build AI chat, CRM automation, and booking systems that capture leads and book appointments for your business — 24/7, while you sleep.</p>
+      <div class="hero-actions">
+        <a href="https://calendly.com/mustafanoori071/30min" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Book a Free Demo
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <a href="#packages" class="btn btn-ghost">View Packages</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">AI lead capture</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3 sec</div>
+          <div class="stat-label">Avg. response time</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Leads to your CRM</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- How it works -->
   <section class="how-it-works" id="about">
     <div class="container">
       <span class="section-label">How It Works</span>
-      <h2 class="section-title">From Visitor to Booked Lead in 3 Steps</h2>
+      <h2 class="section-title reveal">From Visitor to Booked Lead</h2>
+      <p class="section-desc reveal">Three steps. Zero missed opportunities.</p>
       <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
+        <div class="step reveal">
+          <div class="step-num">01</div>
           <h3>Visitor chats on your website</h3>
           <p>A potential customer starts a conversation through your AI chat widget — any time, day or night.</p>
         </div>
-        <div class="step">
-          <div class="step-number">2</div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
           <h3>AI captures their info automatically</h3>
-          <p>Our AI asks the right questions, collects contact details, and understands what they need.</p>
+          <p>Our AI asks the right questions, collects contact details, and understands exactly what they need.</p>
         </div>
-        <div class="step">
-          <div class="step-number">3</div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
           <h3>Lead goes straight to your inbox + CRM</h3>
           <p>Qualified leads are instantly delivered to your email and CRM — ready for you to close.</p>
         </div>
@@ -611,118 +860,187 @@
     </div>
   </section>
 
-  <!-- Services -->
-  <section id="services">
+  <section id="packages">
     <div class="container">
-      <span class="section-label">What We Offer</span>
-      <h2 class="section-title">Services Built to Grow Your Business</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
-            </svg>
+      <span class="section-label">Packages</span>
+      <h2 class="section-title reveal">Choose Your Growth Engine</h2>
+      <p class="section-desc reveal">From getting found to fully automating your front office — pick the plan that fits your business.</p>
+
+      <div class="pricing-grid">
+
+        <div class="price-card reveal">
+          <div class="tier-name">Starter</div>
+          <div class="tier-tagline">"Get found. Get leads."</div>
+          <div class="price-block">
+            <div class="price-setup">$500 one-time setup</div>
+            <div class="price-amount">$250<span>/mo</span></div>
+            <div class="price-annual">$3,000/year ongoing</div>
           </div>
-          <h3>AI Chat Widget</h3>
-          <p>A smart chatbot on your website that answers questions and captures leads 24/7</p>
+          <div class="feature-group-label">Setup (one time)</div>
+          <ul class="feature-list">
+            <li>AI chat widget on website</li>
+            <li>Airtable CRM</li>
+            <li>Calendly booking system</li>
+            <li>Instant lead notifications</li>
+            <li>Confirmation email to lead</li>
+          </ul>
+          <div class="feature-group-label">Monthly ($250/mo)</div>
+          <ul class="feature-list">
+            <li>Scenarios monitored</li>
+            <li>Broken automations fixed</li>
+            <li>Monthly lead report</li>
+          </ul>
+          <a href="https://calendly.com/mustafanoori071/30min" class="price-cta price-cta-secondary" target="_blank" rel="noopener noreferrer">Get Started</a>
         </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
-            </svg>
+
+        <div class="price-card featured reveal">
+          <span class="popular-badge">Most Popular</span>
+          <div class="tier-name">Growth</div>
+          <div class="tier-tagline">"Never miss a lead again."</div>
+          <div class="price-block">
+            <div class="price-amount">$2,000<span>/mo</span></div>
+            <div class="price-annual">$24,000/year — full automation</div>
           </div>
-          <h3>Lead Automation</h3>
-          <p>Every lead automatically saved, notified, and followed up with</p>
+          <ul class="feature-list">
+            <li>AI chat widget on website</li>
+            <li>Airtable CRM</li>
+            <li>Calendly booking</li>
+            <li>AI Receptionist (answers calls 24/7)</li>
+            <li>24hr + 72hr follow-up emails</li>
+            <li>Appointment reminders</li>
+            <li>Google Review automation</li>
+            <li>Post-job follow-up</li>
+            <li>Monthly lead report</li>
+            <li>Monthly strategy call</li>
+            <li>All automations monitored</li>
+          </ul>
+          <a href="https://calendly.com/mustafanoori071/30min" class="price-cta price-cta-primary" target="_blank" rel="noopener noreferrer">Book a Demo</a>
         </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-            </svg>
+
+        <div class="price-card reveal">
+          <div class="tier-name">Elite</div>
+          <div class="tier-tagline">"Your entire front office, automated."</div>
+          <div class="price-block">
+            <div class="price-amount">$4,000<span>/mo</span></div>
+            <div class="price-annual">$48,000/year — white-glove</div>
           </div>
-          <h3>Booking System</h3>
-          <p>Visitors book appointments directly from the chat — no back and forth</p>
+          <ul class="feature-list">
+            <li>Everything in Growth</li>
+            <li>Facebook/Instagram ad management</li>
+            <li>Claude-powered ad copy + testing</li>
+            <li>Meta lead form → CRM integration</li>
+            <li>Multi-channel follow-up (email + SMS + voicemail)</li>
+            <li>Custom branded chatbot</li>
+            <li>Reactivation campaigns</li>
+            <li>Referral automation</li>
+            <li>Live lead dashboard</li>
+            <li>Google Business Profile optimization</li>
+            <li>Weekly snapshot reports</li>
+            <li>Monthly strategy call</li>
+            <li>Priority same-day support</li>
+          </ul>
+          <a href="https://calendly.com/mustafanoori071/30min" class="price-cta price-cta-secondary" target="_blank" rel="noopener noreferrer">Talk to Us</a>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer id="contact">
+  <section class="roi-section" id="roi">
     <div class="container">
-      <div class="footer-main">
-        <p class="footer-brand">Intelligence AI</p>
-        <div class="footer-contact">
-          <span>5532 Sienna Hills Way, Antelope CA 95843</span>
-          <a href="mailto:mustafanoori071@gmail.com">mustafanoori071@gmail.com</a>
-          <a href="tel:+12792357067">279-235-7067</a>
-        </div>
-        <div class="footer-links">
-          <a href="https://getintelligence.co" target="_blank" rel="noopener noreferrer">getintelligence.co</a>
-        </div>
-        <div class="footer-legal">
-          <button type="button" data-legal-open="tos">Terms of Service</button>
-          <span class="footer-separator">|</span>
-          <button type="button" data-legal-open="privacy">Privacy Policy</button>
-        </div>
+      <span class="section-label">The Math</span>
+      <h2 class="section-title reveal">One Client Pays for Itself</h2>
+      <p class="section-desc reveal">See what each package delivers in annual value for your business.</p>
+      <div class="roi-table-wrap reveal">
+        <table class="roi-table">
+          <thead>
+            <tr>
+              <th>Package</th>
+              <th>Monthly</th>
+              <th>Annual Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Starter</td>
+              <td>$250/mo</td>
+              <td class="highlight">$3,000/yr</td>
+            </tr>
+            <tr>
+              <td>Growth</td>
+              <td>$2,000/mo</td>
+              <td class="highlight">$24,000/yr</td>
+            </tr>
+            <tr>
+              <td>Elite</td>
+              <td>$4,000/mo</td>
+              <td class="highlight">$48,000/yr</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner reveal">
+    <h2>Ready to Stop Losing Leads?</h2>
+    <p>Book a free 30-minute demo and we'll show you exactly how Intelligence AI works for your business.</p>
+    <a href="https://calendly.com/mustafanoori071/30min" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+      Book a Free Demo
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+    </a>
+  </div>
+
+  <footer id="contact">
+    <div class="container footer-main">
+      <p class="footer-brand">Intelligence AI</p>
+      <div class="footer-contact">
+        <span>5532 Sienna Hills Way, Antelope CA 95843</span>
+        <a href="mailto:mustafanoori071@gmail.com">mustafanoori071@gmail.com</a>
+        <a href="tel:+12792357067">279-235-7067</a>
+      </div>
+      <a href="https://getintelligence.co" style="color:var(--blue-light);text-decoration:none;font-size:0.9rem;">getintelligence.co</a>
+      <div class="footer-legal">
+        <button type="button" data-legal-open="tos">Terms of Service</button>
+        <span class="footer-separator">|</span>
+        <button type="button" data-legal-open="privacy">Privacy Policy</button>
       </div>
     </div>
   </footer>
 
-  <!-- Terms of Service -->
   <div class="legal-panel" id="legal-tos" role="dialog" aria-labelledby="tos-title" aria-hidden="true">
     <div class="legal-content">
-      <button class="legal-close" type="button" data-legal-close aria-label="Close Terms of Service">&times;</button>
+      <button class="legal-close" type="button" data-legal-close aria-label="Close">&times;</button>
       <h2 id="tos-title">Terms of Service</h2>
       <p class="legal-updated">Last updated: June 27, 2026</p>
       <p>Welcome to Intelligence AI. By accessing or using our website at getintelligence.co and our services, you agree to these Terms of Service.</p>
       <h3>1. Services</h3>
       <p>Intelligence AI provides AI-powered chat and automation systems for local service businesses, including chat widgets, lead automation, and appointment booking integrations.</p>
       <h3>2. Use of Services</h3>
-      <p>You agree to use our services only for lawful purposes and in compliance with all applicable laws and regulations. You may not misuse, reverse engineer, or attempt to disrupt our services.</p>
+      <p>You agree to use our services only for lawful purposes and in compliance with all applicable laws and regulations.</p>
       <h3>3. Communications Consent</h3>
-      <p>SMS consent is collected exclusively through our Lead Connector chat widget on this website. By opting in through the chat widget, you consent to receive communications from Intelligence AI via text message regarding our services. Message and data rates may apply. You may opt out at any time by replying STOP to text messages or contacting us directly.</p>
-      <h3>4. Intellectual Property</h3>
-      <p>All content, branding, and technology on this website are the property of Intelligence AI and may not be copied or reused without written permission.</p>
-      <h3>5. Disclaimer</h3>
-      <p>Our services are provided "as is" without warranties of any kind. Intelligence AI is not liable for any indirect, incidental, or consequential damages arising from use of our services.</p>
-      <h3>6. Changes</h3>
-      <p>We may update these Terms at any time. Continued use of our website after changes constitutes acceptance of the updated Terms.</p>
-      <h3>7. Contact</h3>
-      <p>Questions about these Terms? Contact us at mustafanoori071@gmail.com or 279-235-7067.</p>
+      <p>SMS consent is collected exclusively through our Lead Connector chat widget on this website. By opting in through the chat widget, you consent to receive communications from Intelligence AI via text message regarding our services. Message and data rates may apply. Reply STOP to opt out.</p>
+      <h3>4. Contact</h3>
+      <p>Questions? Contact us at mustafanoori071@gmail.com or 279-235-7067.</p>
     </div>
   </div>
 
-  <!-- Privacy Policy -->
   <div class="legal-panel" id="legal-privacy" role="dialog" aria-labelledby="privacy-title" aria-hidden="true">
     <div class="legal-content">
-      <button class="legal-close" type="button" data-legal-close aria-label="Close Privacy Policy">&times;</button>
+      <button class="legal-close" type="button" data-legal-close aria-label="Close">&times;</button>
       <h2 id="privacy-title">Privacy Policy</h2>
       <p class="legal-updated">Last updated: June 27, 2026</p>
-      <p>Intelligence AI ("we," "us," or "our") respects your privacy. This Privacy Policy explains how we collect, use, and protect information when you visit getintelligence.co or interact with our services.</p>
+      <p>Intelligence AI respects your privacy. This policy explains how we collect, use, and protect information when you visit getintelligence.co.</p>
       <h3>Information We Collect</h3>
       <ul>
-        <li>Contact information you provide (such as name, email address, or phone number) through our chat widget or when booking a demo</li>
+        <li>Contact information provided through our chat widget or when booking a demo</li>
         <li>Technical data such as browser type, IP address, and pages visited</li>
-        <li>Communications you send to us via email or phone</li>
-      </ul>
-      <h3>How We Use Your Information</h3>
-      <ul>
-        <li>To respond to inquiries and provide our services</li>
-        <li>To send follow-up communications about our products and services (with your consent)</li>
-        <li>To improve our website and customer experience</li>
-        <li>To comply with legal obligations</li>
       </ul>
       <h3>Information Sharing</h3>
-      <p>We do not sell your personal information. We may share data with trusted service providers who assist in operating our website and delivering our services, subject to confidentiality agreements.</p>
+      <p>We do not sell your personal information.</p>
       <p><strong>Mobile Information Sharing:</strong> No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</p>
-      <h3>SMS and Phone Communications</h3>
-      <p>SMS consent is collected exclusively through our Lead Connector chat widget. If you opt in via the chat widget and provide your phone number, you authorize Intelligence AI to contact you via call or text for promotional and service-related messages. Message and data rates may apply. Reply STOP to opt out of text messages.</p>
-      <h3>Data Security</h3>
-      <p>We implement reasonable security measures to protect your information. However, no method of transmission over the internet is 100% secure.</p>
-      <h3>Your Rights</h3>
-      <p>You may request access to, correction of, or deletion of your personal information by contacting us at mustafanoori071@gmail.com.</p>
+      <h3>SMS Communications</h3>
+      <p>SMS consent is collected exclusively through our Lead Connector chat widget. Reply STOP to opt out of text messages.</p>
       <h3>Contact Us</h3>
       <p>Intelligence AI<br>5532 Sienna Hills Way, Antelope CA 95843<br>Email: mustafanoori071@gmail.com<br>Phone: 279-235-7067</p>
     </div>
@@ -734,8 +1052,8 @@
       var nav = document.getElementById('main-nav');
 
       toggle.addEventListener('click', function () {
-        var isOpen = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', isOpen);
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
       });
 
       nav.querySelectorAll('a').forEach(function (link) {
@@ -782,6 +1100,18 @@
           document.querySelectorAll('.legal-panel.open').forEach(closeLegal);
         }
       });
+
+      var reveals = document.querySelectorAll('.reveal');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      reveals.forEach(function (el) { observer.observe(el); });
     })();
   </script>
 </body>
