@@ -495,6 +495,164 @@
     .step h3 { font-size: 1.1875rem; font-weight: 700; margin-bottom: 0.65rem; line-height: 1.35; }
     .step p { color: var(--muted); font-size: 0.9375rem; line-height: 1.7; }
 
+    /* Problem / pain */
+    .problem { background: rgba(255,255,255,0.015); }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .pain-card {
+      padding: 1.75rem;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .pain-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(239, 68, 68, 0.25);
+    }
+
+    .pain-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    .pain-card h3 {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .pain-card p {
+      color: var(--muted);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+
+    /* Testimonials */
+    .testimonials { background: rgba(255,255,255,0.015); }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .testimonial-card {
+      padding: 1.75rem;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .testimonial-stars {
+      color: #fbbf24;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+    }
+
+    .testimonial-quote {
+      color: var(--muted);
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      flex: 1;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      font-size: 0.9375rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.8125rem;
+      color: var(--dim);
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item.open { border-color: rgba(59,130,246,0.3); }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 1.35rem;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(59,130,246,0.15);
+      color: var(--blue-light);
+      font-size: 1.125rem;
+      transition: transform 0.25s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      display: none;
+      padding: 0 1.35rem 1.15rem;
+      color: var(--muted);
+      font-size: 0.9375rem;
+      line-height: 1.75;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
     /* Pricing */
     .pricing-grid {
       display: grid;
@@ -802,6 +960,8 @@
       .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
       .price-card.featured { transform: none; }
       .steps { grid-template-columns: 1fr; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
     }
 
     @media (max-width: 768px) {
@@ -879,6 +1039,29 @@
     </div>
   </section>
 
+  <section class="problem" id="problem">
+    <div class="container">
+      <h2 class="section-title reveal">Sound familiar?</h2>
+      <div class="pain-grid">
+        <div class="pain-card reveal">
+          <div class="pain-icon">📞</div>
+          <h3>Missed calls = missed money</h3>
+          <p>Every unanswered call is a lead going to your competitor.</p>
+        </div>
+        <div class="pain-card reveal">
+          <div class="pain-icon">📋</div>
+          <h3>No system to follow up</h3>
+          <p>Leads come in and fall through the cracks with no automated follow-up.</p>
+        </div>
+        <div class="pain-card reveal">
+          <div class="pain-icon">😴</div>
+          <h3>Your business stops when you sleep</h3>
+          <p>Customers reach out at night and never hear back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee">
       <span class="marquee-item">AI Chat Widget</span>
@@ -934,8 +1117,6 @@
         <div class="price-card reveal">
           <div class="tier-name">Starter</div>
           <div class="tier-tagline">"Get found. Get leads."</div>
-          <div class="price-amount">$1,000<span>/mo</span></div>
-          <div class="price-annual">$12,000/year</div>
           <ul class="feature-list">
             <li>AI chat widget on website</li>
             <li>Airtable CRM setup</li>
@@ -952,8 +1133,6 @@
           <span class="popular-badge">Most Popular</span>
           <div class="tier-name">Growth</div>
           <div class="tier-tagline">"Never miss a lead again."</div>
-          <div class="price-amount">$2,000<span>/mo</span></div>
-          <div class="price-annual">$24,000/year</div>
           <ul class="feature-list">
             <li>Everything in Starter</li>
             <li>AI Receptionist (24/7 calls)</li>
@@ -969,8 +1148,6 @@
         <div class="price-card reveal">
           <div class="tier-name">Elite</div>
           <div class="tier-tagline">"Your entire front office, automated."</div>
-          <div class="price-amount">$4,000<span>/mo</span></div>
-          <div class="price-annual">$48,000/year</div>
           <ul class="feature-list">
             <li>Everything in Growth</li>
             <li>Facebook/Instagram ad management</li>
@@ -986,6 +1163,78 @@
             <li>Priority same-day support</li>
           </ul>
           <a href="https://calendly.com/mustafanoori071/30min" class="price-cta price-cta-secondary" target="_blank" rel="noopener noreferrer">Talk to Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <h2 class="section-title reveal">What our clients say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">"Placeholder testimonial — swap this with a real client quote about lead capture and booking results."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-name">Sarah M.</span>
+            <span class="testimonial-role">Med Spa Owner</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">"Placeholder testimonial — swap this with a real client quote about missed calls and follow-up automation."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-name">James T.</span>
+            <span class="testimonial-role">HVAC Contractor</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">"Placeholder testimonial — swap this with a real client quote about CRM and front-office automation."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-name">Priya K.</span>
+            <span class="testimonial-role">Law Firm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <span class="section-label">FAQ</span>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" type="button" aria-expanded="false">
+            How long does setup take?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">Most systems go live within 5–7 business days.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" type="button" aria-expanded="false">
+            Do I need any tech experience?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">None at all. We handle everything end to end.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" type="button" aria-expanded="false">
+            What kind of businesses do you work with?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">Local service businesses — HVAC, cleaning, med spas, law firms, contractors, and more.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" type="button" aria-expanded="false">
+            What happens if something breaks?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">We monitor all automations 24/7 and fix issues same day on Growth and Elite plans.</div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" type="button" aria-expanded="false">
+            How do I get started?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">Book a free 30-minute demo call. We'll map out your system and show you exactly what it looks like.</div>
         </div>
       </div>
     </div>
@@ -1007,7 +1256,6 @@
     <div class="container footer-main">
       <p class="footer-brand">Intelligence AI</p>
       <div class="footer-contact">
-        <span>5532 Sienna Hills Way, Antelope CA 95843</span>
         <a href="mailto:mustafanoori071@gmail.com">mustafanoori071@gmail.com</a>
         <a href="tel:+12792357067">279-235-7067</a>
       </div>
@@ -1047,7 +1295,7 @@
       <h3>SMS</h3>
       <p>SMS consent is collected exclusively through our Lead Connector chat widget. Reply STOP to opt out.</p>
       <h3>Contact</h3>
-      <p>5532 Sienna Hills Way, Antelope CA 95843 · mustafanoori071@gmail.com · 279-235-7067</p>
+      <p>mustafanoori071@gmail.com · 279-235-7067</p>
     </div>
   </div>
 
@@ -1129,6 +1377,21 @@
 
       document.querySelectorAll('.reveal').forEach(function (el) {
         observer.observe(el);
+      });
+
+      document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.faq-item');
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
       });
     })();
   </script>
