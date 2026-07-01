@@ -27,6 +27,6 @@ li { margin-bottom: 0.5rem; }
 .back { display: block; margin-top: 2rem; font-size: 0.875rem; color: #64748b; text-decoration: none; }
 footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(148,163,184,0.12); font-size: 0.8125rem; color: #64748b; text-align: center; }
 .footer-legal-links { margin-top: 0.75rem; font-size: 0.8125rem; }
-.footer-legal-links a { color: #64748b; margin: 0 0.5rem; }
+.footer-legal-links a { color: #64748b; text-decoration: none; margin: 0 0.5rem; }
 article p { color: #94a3b8; margin-bottom: 1rem; }
 article h2 { font-size: 1.15rem; margin: 2rem 0 0.75rem; }

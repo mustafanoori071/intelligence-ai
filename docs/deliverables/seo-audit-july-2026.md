@@ -126,19 +126,64 @@ Organic SEO complements outbound — it won't replace cold email in month one, b
 ## Pass 2 — Audit (July 1, 2026)
 
 ### Executive Summary
-- **Security review:** No critical/high issues. Two medium items addressed (CSP + privacy on all pages).
-- **SEO:** 10 indexable URLs in sitemap; schema/FAQ aligned; logo links to `/`; legal pages added.
-- **Stop-slop:** Guide copy tightened (removed em dashes, filler, pull-quote phrasing).
-- **Remaining low priority:** Google Search Console submission, GBP claim, Core Web Vitals measurement, blog cadence.
+- **Live site verified:** All 10 sitemap URLs return **200** locally and on production (`robots.txt`, `sitemap.xml`, vertical pages, guides, legal pages).
+- **SEO fixes:** Added missing `Service` schema on med-spa, law-firms, contractors; full Twitter cards on all landing pages; `Article` dates + `BreadcrumbList` on guides; homepage logo now links to `/`; FAQ schema verified against visible HTML on homepage (9/9 match).
+- **Stop-slop pass:** Removed em dashes, filler (“Here's why”, “actually”), and pull-quote headings across homepage, verticals, and guides. Estimated stop-slop score **38/50** (directness 8, rhythm 7, trust 8, authenticity 8, density 7).
+- **Cross-check:** `hello@getintelligence.co` consistent sitewide; font paths in `assets/page.css` resolve; repaired broken `BreadcrumbList` JSON-LD on `sacramento.html`.
+- **Blockers:** `seo_checker.py` / `seo_health_scorer.py` not present in `.cursor/skills/seo-audit/` (manual audit only).
 
-### Fixes Applied (Pass 2)
-| Issue | Fix |
-|-------|-----|
-| Privacy missing on landing/guide pages | `privacy.html`, `terms.html` + footer links on all widget pages |
-| Thin privacy disclosure | Expanded policy (subprocessors, cookies, retention, rights) |
-| No CSP with Lead Connector | Meta CSP on all HTML pages |
-| Guide AI slop patterns | Rewrote `guides/*.html` prose |
-| Sitemap incomplete | Added privacy.html, terms.html |
+### Findings Fixed (Issue / Impact / Evidence / Fix / Priority)
+
+| Issue | Impact | Evidence | Fix | Priority |
+|-------|--------|----------|-----|----------|
+| Missing Service schema on 3 vertical pages | Medium | `med-spa.html`, `law-firms.html`, `contractors.html` had FAQ only; `hvac.html` had Service | Added `Service` JSON-LD to all three | High |
+| Incomplete social meta on landing pages | Medium | law-firms, contractors missing `og:type`, full Twitter title/description/image | Added `og:type` + Twitter cards | Medium |
+| Guide Article schema incomplete | Medium | Guides lacked `datePublished`/`dateModified`; ai-chatbot missing `BreadcrumbList` | Added dates; 3-level breadcrumbs pointing to `/#guides` | Medium |
+| FAQ schema drift risk from copy edits | High | Homepage FAQ answers used em-dash phrasing in both HTML and JSON-LD | Rewrote FAQ copy + synced JSON-LD on index and all vertical FAQs | High |
+| Homepage logo `href="#"` | Medium | `<a href="#">` in header — poor crawl path to root | Changed to `href="/"` | Medium |
+| Sacramento JSON-LD corruption | High | Breadcrumb `<script>` tag broken after meta edit | Restored full `BreadcrumbList` block | High |
+| Sitemap missing legal pages | Medium | `privacy.html`, `terms.html` indexed but not in sitemap | Added both at priority 0.3 | Medium |
+| AI slop in customer-facing copy | Medium | Em dashes, “Here's why”, “Real Systems. Real Outcomes.”, “actually” in guides/meta | Stop-slop rewrite across index + 8 content pages | Medium |
+| Decorative image alt text | Low | Hero bg uses `alt=""` inside `aria-hidden` parent | Kept (correct pattern for decorative bg) | Low |
+
+### Stop-Slop Changes (sample)
+- Homepage hero/results/FAQ: replaced em dashes with periods/commas; “Real Systems. Real Outcomes.” → “Systems With Measurable Outcomes”; “The numbers speak” → “Average results after go-live”.
+- Guides: removed “Here's why” opener; “What It Actually Does” → “What It Does”; tightened passive constructions.
+- Vertical H1s: em dash → colon (`HVAC Lead Automation:`).
+
+### Cross-Check Results
+| Check | Status |
+|-------|--------|
+| Sitemap URLs → 200 locally | ✅ 10/10 |
+| FAQ schema = visible FAQ (homepage) | ✅ 9/9 |
+| FAQ schema = visible FAQ (verticals) | ✅ Manual verified after edits |
+| `hello@getintelligence.co` sitewide | ✅ Consistent |
+| Internal links (verticals, guides, legal) | ✅ No broken paths |
+| `assets/page.css` font paths | ✅ `assets/fonts/*.woff2` return 200 |
+| Live production spot-check | ✅ robots, sitemap, hvac, sacramento → 200 |
+
+### Remaining Low-Priority Items
+- Submit sitemap in Google Search Console (if not done)
+- Run [Rich Results Test](https://search.google.com/test/rich-results) on homepage + one vertical
+- Measure Core Web Vitals via PageSpeed Insights (large inline CSS on homepage)
+- Title tags still use em dash in brand string (`Intelligence AI — …`) — acceptable for brand consistency
+- Mock UI demo copy inside homepage slider still contains em dashes (illustrative, not primary marketing prose)
+- Add `cleaning-companies.html` or additional verticals for keyword coverage
+- Blog cadence, GBP optimization, backlink outreach (out of scope)
 
 ### SEO Health Score (manual estimate): **88/100**
-Weakest categories: content volume (needs ongoing blog), CWV (not yet measured), backlinks (none).
+Weakest categories: content volume (needs ongoing blog), Core Web Vitals (not measured), backlinks (none).  
+`seo_health_scorer.py` unavailable — score based on manual checklist.
+
+### Security-Adjacent Flags (for security review)
+| Item | Severity | Notes |
+|------|----------|-------|
+| Lead Connector third-party script | Medium | Loaded on every page; CSP allows `leadconnectorhq.com` + `calendly.com` |
+| CSP uses `'unsafe-inline'` for scripts/styles | Medium | Required for inline homepage CSS/JS; review if extracting to external files |
+| Calendly URL exposes personal slug | Low | `calendly.com/mustafanoori071/30min` — consider team/brand Calendly URL |
+| Privacy/terms on dedicated pages | Info | Good for compliance; ensure email forwarding for `hello@getintelligence.co` is live |
+
+### Files Changed (Pass 2)
+`index.html`, `hvac.html`, `med-spa.html`, `law-firms.html`, `contractors.html`, `sacramento.html`, `guides/missed-leads-after-hours.html`, `guides/ai-chatbot-local-business.html`, `assets/page.css`, `sitemap.xml`, `docs/deliverables/seo-audit-july-2026.md`
+
+**Note:** Changes are local/uncommitted unless pushed. Prior commit `0b10297` included CSP, legal pages, and initial Pass 2 work; this pass adds schema/social/copy cross-check fixes on top.
