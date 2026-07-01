@@ -120,3 +120,25 @@
 | Month 3–6 | Broader terms with guides + GBP + backlinks |
 
 Organic SEO complements outbound — it won't replace cold email in month one, but these pages are built to capture buyers actively searching.
+
+---
+
+## Pass 2 — Audit (July 1, 2026)
+
+### Executive Summary
+- **Security review:** No critical/high issues. Two medium items addressed (CSP + privacy on all pages).
+- **SEO:** 10 indexable URLs in sitemap; schema/FAQ aligned; logo links to `/`; legal pages added.
+- **Stop-slop:** Guide copy tightened (removed em dashes, filler, pull-quote phrasing).
+- **Remaining low priority:** Google Search Console submission, GBP claim, Core Web Vitals measurement, blog cadence.
+
+### Fixes Applied (Pass 2)
+| Issue | Fix |
+|-------|-----|
+| Privacy missing on landing/guide pages | `privacy.html`, `terms.html` + footer links on all widget pages |
+| Thin privacy disclosure | Expanded policy (subprocessors, cookies, retention, rights) |
+| No CSP with Lead Connector | Meta CSP on all HTML pages |
+| Guide AI slop patterns | Rewrote `guides/*.html` prose |
+| Sitemap incomplete | Added privacy.html, terms.html |
+
+### SEO Health Score (manual estimate): **88/100**
+Weakest categories: content volume (needs ongoing blog), CWV (not yet measured), backlinks (none).
