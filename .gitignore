@@ -31,3 +31,9 @@ __pycache__/
 # Local tooling
 node_modules/
 .playwright/
+
+# Agent / ops — not for public site (keep local only)
+.claude/
+.cursor/
+.cursorrules
+docs/
