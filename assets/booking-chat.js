@@ -29,6 +29,8 @@
     },
   ];
 
+  var widgetApi = null;
+
   function loadCss() {
     if (document.querySelector('link[data-ia-booking="1"]')) return;
     var link = document.createElement("link");
@@ -180,8 +182,7 @@
     }
 
     launcher.addEventListener("click", function () {
-      var open = !panel.classList.contains("is-open");
-      setOpen(open);
+      setOpen(!panel.classList.contains("is-open"));
     });
 
     closeBtn.addEventListener("click", function () {
@@ -197,6 +198,24 @@
     });
 
     renderStep();
+
+    widgetApi = { open: function () { setOpen(true); } };
+    window.iaBooking = widgetApi;
+
+    document.addEventListener("click", function (e) {
+      var link = e.target.closest('a[href="#book"], a[href*="#book"]');
+      if (!link) return;
+      var href = link.getAttribute("href") || "";
+      if (href.indexOf("#book") === -1) return;
+      if (href === "#book" || href.endsWith("#book") || href.indexOf("#book") >= 0) {
+        e.preventDefault();
+        setOpen(true);
+      }
+    });
+
+    if (window.location.hash === "#book") {
+      setOpen(true);
+    }
   }
 
   loadCss();
