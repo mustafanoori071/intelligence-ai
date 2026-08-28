@@ -1,0 +1,257 @@
+/* Intelligence AI — VSL-style booking funnel (light, readable) */
+.ia-booking-root {
+  --ia-bg: #ffffff;
+  --ia-panel: #ffffff;
+  --ia-surface: #f8fafc;
+  --ia-text: #0f172a;
+  --ia-muted: #475569;
+  --ia-dim: #64748b;
+  --ia-blue: #2563eb;
+  --ia-blue-dark: #1d4ed8;
+  --ia-cyan: #0891b2;
+  --ia-border: #e2e8f0;
+  --ia-shadow: 0 24px 64px rgba(15, 23, 42, 0.14);
+  --ia-radius: 18px;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  position: fixed;
+  z-index: 99999;
+  bottom: 1.25rem;
+  right: 1.25rem;
+}
+
+.ia-booking-launcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.1rem;
+  min-height: 3.25rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  box-shadow: 0 8px 28px rgba(37, 99, 235, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ia-booking-launcher:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(37, 99, 235, 0.42);
+}
+
+.ia-booking-launcher svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.ia-booking-launcher[aria-expanded="true"] {
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 0;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--ia-surface);
+  color: var(--ia-text);
+  border: 1px solid var(--ia-border);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+}
+
+.ia-booking-panel {
+  position: absolute;
+  bottom: calc(3.25rem + 0.85rem);
+  right: 0;
+  width: min(420px, calc(100vw - 2rem));
+  max-height: min(680px, calc(100vh - 6rem));
+  display: flex;
+  flex-direction: column;
+  background: var(--ia-panel);
+  border: 1px solid var(--ia-border);
+  border-radius: var(--ia-radius);
+  box-shadow: var(--ia-shadow);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+}
+
+.ia-booking-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.ia-booking-header {
+  padding: 1rem 1.15rem 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--ia-border);
+}
+
+.ia-booking-brand {
+  font-family: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--ia-text);
+  line-height: 1.3;
+}
+
+.ia-booking-brand span {
+  color: var(--ia-cyan);
+}
+
+.ia-booking-sub {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ia-dim);
+  margin-top: 0.15rem;
+}
+
+.ia-booking-close {
+  background: #fff;
+  border: 1px solid var(--ia-border);
+  color: var(--ia-dim);
+  cursor: pointer;
+  padding: 0.35rem;
+  line-height: 1;
+  border-radius: 10px;
+}
+
+.ia-booking-close:hover {
+  color: var(--ia-text);
+  background: var(--ia-surface);
+}
+
+.ia-booking-progress {
+  height: 4px;
+  background: #e2e8f0;
+}
+
+.ia-booking-progress-bar {
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(90deg, #2563eb, #06b6d4);
+  transition: width 0.35s ease;
+}
+
+.ia-booking-body {
+  flex: 1;
+  overflow: auto;
+  padding: 1.15rem 1.15rem 1rem;
+}
+
+.ia-booking-step {
+  background: var(--ia-surface);
+  border: 1px solid var(--ia-border);
+  border-radius: 14px;
+  padding: 1.1rem 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.ia-booking-step.ia-step-enter {
+  animation: iaFadeIn 0.28s ease;
+}
+
+@keyframes iaFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ia-booking-title {
+  margin: 0 0 0.55rem;
+  font-family: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ia-text);
+}
+
+.ia-booking-copy {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--ia-muted);
+  line-height: 1.6;
+}
+
+.ia-booking-cta {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.28);
+  transition: transform 0.15s ease;
+}
+
+.ia-booking-cta:hover {
+  transform: translateY(-1px);
+}
+
+.ia-booking-calendly {
+  display: none;
+  margin-top: 0.25rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ia-border);
+  min-height: 520px;
+  background: #fff;
+}
+
+.ia-booking-calendly.is-visible {
+  display: block;
+}
+
+.ia-booking-calendly.is-visible iframe {
+  border: 0;
+  width: 100%;
+  min-height: 520px;
+}
+
+.ia-booking-foot {
+  padding: 0.7rem 1.15rem;
+  border-top: 1px solid var(--ia-border);
+  font-size: 0.72rem;
+  color: var(--ia-dim);
+  text-align: center;
+  background: #fafbfc;
+}
+
+@media (max-width: 480px) {
+  .ia-booking-root {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+
+  .ia-booking-panel {
+    width: 100%;
+    right: 0;
+    max-height: calc(100vh - 5.5rem);
+  }
+
+  .ia-launcher-label {
+    display: none;
+  }
+
+  .ia-booking-launcher {
+    width: 3.25rem;
+    height: 3.25rem;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+}

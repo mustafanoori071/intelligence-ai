@@ -1,0 +1,33 @@
+# Secrets & local env
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+credentials.json
+**/credentials*.json
+**/service-account*.json
+.vercel
+.wrangler
+
+# Lead / prospect PII — never commit
+docs/deliverables/private/
+**/leads*.csv
+**/leads*.json
+**/no-website-leads.*
+**/*-leads.csv
+**/*-leads.json
+**/seen_ledger.json
+**/api_usage.json
+
+# Python / OS junk
+__pycache__/
+*.pyc
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Local tooling
+node_modules/
+.playwright/
